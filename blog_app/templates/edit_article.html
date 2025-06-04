@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Edit Article</h2>
+  <form method="post">
+    <input type="text" name="title" value="{{ article['title'] }}" required><br>
+    <textarea name="content" required>{{ article['content'] }}</textarea><br>
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

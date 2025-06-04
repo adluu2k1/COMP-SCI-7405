@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ article['title'] }}</h2>
+  <p><em>Posted on {{ article['created'] }}</em></p>
+  <p style="white-space: pre-line;">{{ article['content'] }}</p>
+{% endblock %}

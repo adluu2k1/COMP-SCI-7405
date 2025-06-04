@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+nav a { margin: 0 10px; }
+input, textarea { width: 300px; margin: 5px 0; }
+textarea { height: 150px; }

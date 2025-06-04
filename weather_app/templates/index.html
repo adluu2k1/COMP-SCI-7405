@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h1 class="text-center mb-4">🌤️ Weather Forecast</h1>
+        <form method="post" class="form-inline justify-content-center mb-4">
+            <input type="text" name="location" class="form-control mr-2" placeholder="Enter location" value="{{ location }}">
+            <button type="submit" class="btn btn-primary">Get Weather</button>
+        </form>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+
+        {% if weather %}
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <h2>{{ weather.city }}</h2>
+                    <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="icon">
+                    <p>{{ weather.description }}</p>
+                    <p><strong>Temperature:</strong> {{ weather.temperature }}°C</p>
+                    <p><strong>Humidity:</strong> {{ weather.humidity }}%</p>
+                    <p><strong>Wind Speed:</strong> {{ weather.wind_speed }} m/s</p>
+                </div>
+            </div>
+
+            <h3>Next 5 Hours</h3>
+            <div class="d-flex overflow-auto mb-4">
+                {% for hour in forecast.next_5_hours %}
+                    <div class="card mx-2 text-center p-2">
+                        <p><strong>{{ hour.time }}</strong></p>
+                        <img src="http://openweathermap.org/img/wn/{{ hour.icon }}@2x.png" alt="icon">
+                        <p>{{ hour.description }}</p>
+                        <p>{{ hour.temp }}°C</p>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <h3>Next 3 Days</h3>
+            <div class="d-flex justify-content-around">
+                {% for day in forecast.next_3_days %}
+                    <div class="card text-center p-2">
+                        <p><strong>{{ day.date }}</strong></p>
+                        <img src="http://openweathermap.org/img/wn/{{ day.icon }}@2x.png" alt="icon">
+                        <p>{{ day.description }}</p>
+                        <p>{{ day.temp }}°C</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

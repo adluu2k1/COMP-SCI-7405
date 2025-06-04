@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Manage Books</h2>
+<ul>
+{% for book in books %}
+    <li>ID: {{ book.id }} | {{ book.title }} by {{ book.author }} - {% if book.available %}Available{% else %}Not Available{% endif %}</li>
+{% endfor %}
+{% endblock %}

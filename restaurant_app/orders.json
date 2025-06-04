@@ -1,0 +1,40 @@
+[
+    {
+        "id": "20250604022623",
+        "table": "2",
+        "dishes": {
+            "Pizza": {
+                "quantity": 2,
+                "price": 15.0
+            },
+            "Burger": {
+                "quantity": 3,
+                "price": 9.0
+            },
+            "Salad": {
+                "quantity": 5,
+                "price": 7.0
+            }
+        },
+        "total": 92.0,
+        "datetime": "2025-06-04 02:26:23",
+        "paid": true
+    },
+    {
+        "id": "20250604023604",
+        "table": "4",
+        "dishes": {
+            "Burger": {
+                "quantity": 1,
+                "price": 9.0
+            },
+            "Salad": {
+                "quantity": 1,
+                "price": 7.0
+            }
+        },
+        "total": 16.0,
+        "datetime": "2025-06-04 02:36:04",
+        "paid": false
+    }
+]

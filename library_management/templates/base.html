@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <nav>
+    <a href="{{ url_for('index') }}">Home</a> |
+    <a href="{{ url_for('search') }}">Search Books</a>
+    {% if user_role == 'customer' %}
+        | <a href="{{ url_for('return_book') }}">Return Book</a>
+        | <a href="{{ url_for('receipts') }}">Receipts</a>
+    {% elif user_role == 'staff' %}
+        | <a href="{{ url_for('staff') }}">Staff: Add Book</a>
+        | <a href="{{ url_for('manage_books') }}">Manage Inventory</a>
+    {% endif %}
+    {% if user_role %}
+        | <a href="{{ url_for('logout') }}">Logout ({{ session['username'] }})</a>
+    {% else %}
+        | <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</nav>
+
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

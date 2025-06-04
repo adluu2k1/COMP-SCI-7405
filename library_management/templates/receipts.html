@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Receipts</h2>
+<ul>
+{% for r in records %}
+    <li>{{ r.customer_name }} borrowed book ID {{ r.book_id }} on {{ r.borrow_date }} {% if r.return_date %}and returned on {{ r.return_date }}{% else %}(not returned yet){% endif %}</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,55 @@
+#:import MDToolbar kivymd.uix.toolbar.MDToolbar
+#:import MDLabel kivymd.uix.label.MDLabel
+#:import MDFlatButton kivymd.uix.button.MDFlatButton
+
+
+ScreenManager:
+    id: screen_manager
+
+    Screen:
+        name: "main_screen"
+
+        BoxLayout:
+            orientation: "vertical"
+
+            MDToolbar:
+                title: "To-Do List"
+                elevation: 10
+                left_action_items: [["menu", lambda x: app.show_dialog("Menu clicked")]]
+
+            ScrollView:
+                MDList:
+                    id: task_list
+
+            MDFloatingActionButton:
+                icon: "plus"
+                pos_hint: {"center_x": 0.9, "center_y": 0.1}
+                on_release: app.root.current = "add_task_screen"
+
+    Screen:
+        name: "add_task_screen"
+
+        BoxLayout:
+            orientation: "vertical"
+
+            MDToolbar:
+                title: "Add Task"
+                elevation: 10
+                left_action_items: [["arrow-left", lambda x: app.switch_to_main()]]
+
+            MDTextField:
+                id: task_title
+                hint_text: "Task Title"
+                pos_hint: {"center_x": 0.5}
+                size_hint_x: 0.8
+
+            MDTextField:
+                id: date_input
+                hint_text: "YYYY-MM-DD"
+                pos_hint: {"center_x": 0.5}
+                size_hint_x: 0.8
+
+            MDRaisedButton:
+                text: "Add Task"
+                pos_hint: {"center_x": 0.5}
+                on_release: app.add_task()

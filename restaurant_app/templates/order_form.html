@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>{{ 'Edit' if order else 'Add' }} Order</h2>
+<form method="post">
+    <label>Table Number:</label>
+    <input type="number" name="table" value="{{ order.table if order else '' }}" required><br>
+
+    <h3>Dishes</h3>
+    {% for item in settings.menu %}
+        <div>
+            {{ item.name }} ({{ item.price }})<br>
+            Quantity:
+            <input type="number" name="quantities[{{ item.name }}]" min="0" 
+                   value="{% if order and item.name in order['dishes'] %}{{ order['dishes'][item.name]['quantity'] }}{% else %}0{% endif %}">
+        </div>
+    {% endfor %}
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{
+    "restaurant_name": "My Restaurant",
+    "open_hours": "9am - 9pm",
+    "tables": 10,
+    "menu": [
+        {
+            "name": "Pizza",
+            "price": 15.0
+        },
+        {
+            "name": "Burger",
+            "price": 9.0
+        },
+        {
+            "name": "Salad",
+            "price": 7.0
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+admin
+password123
+John Doe
+johndoe@example.com

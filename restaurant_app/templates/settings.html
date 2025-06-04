@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Settings</h2>
+<form method="post">
+    <label>Number of Tables:</label>
+    <input type="number" name="tables" value="{{ settings.tables }}" required><br>
+    <label>Menu (format: name:price, name:price,...):</label><br>
+    <textarea name="menu" required>{{ menu_str }}</textarea><br>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
